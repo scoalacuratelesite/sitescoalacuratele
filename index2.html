@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Școala Curatele</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .navbar {
+      background-color: #2c3e50;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 10px 20px;
+    }
+
+    .navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    .navbar li {
+      position: relative;
+    }
+
+    .navbar > ul > li > a {
+      display: block;
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .navbar a:hover {
+      background-color: #1abc9c;
+    }
+
+    .navbar li ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #ecf0f1;
+      min-width: 250px;
+      z-index: 1;
+    }
+
+    .navbar li:hover > ul {
+      display: block;
+    }
+
+    .navbar li ul li a {
+      color: #2c3e50;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .navbar li ul li a:hover {
+      background-color: #bdc3c7;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .hero {
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .gallery img {
+      width: calc(33.33% - 10px);
+      height: 200px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .useful-links {
+      margin-top: 40px;
+    }
+
+    .useful-links h2 {
+      margin-bottom: 10px;
+    }
+
+    .useful-links ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .useful-links ul li {
+      margin: 5px 0;
+    }
+
+    .useful-links ul li a {
+      color: #2c3e50;
+      text-decoration: none;
+    }
+
+    .useful-links ul li a:hover {
+      text-decoration: underline;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-content {
+      margin: 15% auto;
+      display: block;
+      max-width: 80%;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .gallery img {
+        width: calc(50% - 10px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery img {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <ul>
+      <li><a href="#">Acasa</a></li>
+      <li><a href="#">Despre noi</a></li>
+      <li>
+        <a href="#">Organizare ▾</a>
+        <ul>
+          <li><a href="pdf/orar.pdf" target="_blank">Orar</a></li>
+          <li><a href="pdf/microbuz.pdf" target="_blank">Microbuz școlar</a></li>
+          <li><a href="pdf/declaratii_avere.pdf" target="_blank">Declarații de avere</a></li>
+          <li><a href="pdf/declaratii_interes.pdf" target="_blank">Declarații de interes</a></li>
+          <li><a href="pdf/sna.pdf" target="_blank">SNA</a></li>
+          <li><a href="pdf/structuri.pdf" target="_blank">Structuri</a></li>
+          <li><a href="pdf/proceduri.pdf" target="_blank">Proceduri</a></li>
+          <li><a href="pdf/regulamente.pdf" target="_blank">Regulamente</a></li>
+          <li><a href="pdf/mecanisme_integritate.pdf" target="_blank">Mecanisme de integritate</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Management educațional ▾</a>
+        <ul>
+          <li><a href="pdf/cod_etica.pdf.pdf" target="_blank">Codul de etică</a></li>
+          <li><a href="pdf/ceac.pdf" target="_blank">CEAC</a></li>
+          <li><a href="pdf/pdi.pdf" target="_blank">PDI</a></li>
+          <li><a href="pdf/plan_operational.pdf" target="_blank">Plan operațional</a></li>
+          <li><a href="pdf/RI_2023-2024_Curatele.pdf.pdf" target="_blank">RI</a></li>
+          <li><a href="pdf/Rofui_2023_2024.pdf.pdf" target="_blank">ROFUI</a></li>
+          <li><a href="pdf/consiliu_administratie.pdf" target="_blank">Consiliu de administrație</a></li>
+          <li><a href="pdf/consiliu_profesoral.pdf" target="_blank">Consiliu profesoral</a></li>
+          <li><a href="pdf/plan_managerial.pdf" target="_blank">Plan managerial</a></li>
+          <li><a href="pdf/comisii.pdf" target="_blank">Comisii</a></li>
+          <li><a href="pdf/buget.pdf" target="_blank">Buget</a></li>
+          <li><a href="pdf/management_violenta.pdf" target="_blank">Management cazuri de violență</a></li>
+          <li>
+            <a href="#">Documente manageriale ▸</a>
+            <ul>
+              <li><a href="pdf/diagnoza.pdf" target="_blank">Documente de diagnoză</a></li>
+              <li><a href="pdf/prognoza.pdf" target="_blank">Documente de prognoză</a></li>
+              <li><a href="pdf/evidenta.pdf" target="_blank">Documente de evidență</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <img src="images/scoala.jpeg" alt="Imagine scoala">
+  </div>
+
+  <div class="content">
+    <h1>Bine ați venit pe site-ul școlii!</h1>
+    <p>Aceasta este pagina principală.</p>
+
+    <h2>Galerie foto</h2>
+    <div class="gallery">
+      <img src="images/scoala2.jpeg" alt="Clasa" onclick="openModal(this.src)">
+      <img src="images/curtea2.jpeg" alt="Laborator" onclick="openModal(this.src)">
+      <img src="images/curtea.jpeg" alt="Curtea școlii" onclick="openModal(this.src)">
+    </div>
+
+    <div class="useful-links">
+      <h2>Linkuri utile</h2>
+      <ul>
+        <li><a href="https://www.edu.ro" target="_blank">Ministerul Educației</a></li>
+        <li><a href="https://www.isj.ro" target="_blank">Inspectoratul Școlar Județean</a></li>
+        <li><a href="https://bacalaureat.edu.ro" target="_blank">Bacalaureat</a></li>
+        <li><a href="https://evaluare.edu.ro" target="_blank">Evaluare Națională</a></li>
+        <li><a href="https://titularizare.edu.ro" target="_blank">Titularizare</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modal for Image Preview -->
+  <div id="myModal" class="modal" onclick="closeModal()">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="img01">
+  </div>
+
+  <script>
+    function openModal(src) {
+      document.getElementById("myModal").style.display = "block";
+      document.getElementById("img01").src = src;
+    }
+
+    function closeModal() {
+      document.getElementById("myModal").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
